@@ -60,6 +60,7 @@ def main(page: ft.Page):
         )
     )
 
-# Webとして起動する場合、ポートやアップロードディレクトリの指定が必要な場合があります
-# ローカルでWebテストをする場合: flet run main.py -d (または通常の `flet run`)
-ft.app(target=main, view=ft.AppView.WEB_BROWSER)
+if __name__ == "__main__":
+    import os
+    port = int(os.getenv("PORT", 8550))
+    ft.app(target=main, host="0.0.0.0", view=ft.AppView.WEB_BROWSER, port=port)
